@@ -1,0 +1,101 @@
+senID,fName,lName,party,state,website
+A000360,Lamar,Alexander,Republican,Tennessee,http://www.alexander.senate.gov/
+A000368,Kelly,Ayotte,Republican,New Hampshire,
+B001230,Tammy,Baldwin,Democratic,Wisconsin,http://www.baldwin.senate.gov/
+B001261,John,Barrasso,Republican,Wyoming,http://www.barrasso.senate.gov/
+B001267,Michael,Bennet,Democratic,Colorado,http://www.bennet.senate.gov/
+B001277,Richard,Blumenthal,Democratic,Connecticut,http://www.blumenthal.senate.gov/
+B000575,Roy,Blunt,Republican,Missouri,http://www.blunt.senate.gov/
+B001288,Cory,Booker,Democratic,New Jersey,http://www.booker.senate.gov/
+B001236,John,Boozman,Republican,Arkansas,http://www.boozman.senate.gov/
+B000711,Barbara,Boxer,Democratic,California,
+B000944,Sherrod,Brown,Democratic,Ohio,http://www.brown.senate.gov/
+B001135,Richard,Burr,Republican,North Carolina,http://www.burr.senate.gov/
+C000127,Maria,Cantwell,Democratic,Washington,http://www.cantwell.senate.gov/
+C000141,Ben,Cardin,Democratic,Maryland,http://www.cardin.senate.gov/
+C000174,Tom,Carper,Democratic,Delaware,http://www.carper.senate.gov/
+C001070,Bob,Casey,Democratic,Pennsylvania,http://www.casey.senate.gov/
+C001075,Bill,Cassidy,Republican,Louisiana,http://www.cassidy.senate.gov/
+C000542,Dan,Coats,Republican,Indiana,
+C000567,Thad,Cochran,Republican,Mississippi,http://www.cochran.senate.gov/
+C001035,Susan,Collins,Republican,Maine,http://www.collins.senate.gov/
+C001088,Chris,Coons,Democratic,Delaware,http://www.coons.senate.gov/
+C001071,Bob,Corker,Republican,Tennessee,http://www.corker.senate.gov/
+C001056,John,Cornyn,Republican,Texas,http://www.cornyn.senate.gov/
+C001095,Tom,Cotton,Republican,Arkansas,http://www.cotton.senate.gov/
+C000880,Mike,Crapo,Republican,Idaho,http://www.crapo.senate.gov/
+C001098,Ted,Cruz,Republican,Texas,http://www.cruz.senate.gov/
+D000618,Steve,Daines,Republican,Montana,http://www.daines.senate.gov/
+D000607,Joe,Donnelly,Democratic,Indiana,http://www.donnelly.senate.gov/
+D000563,Dick,Durbin,Democratic,Illinois,http://www.durbin.senate.gov/
+E000285,Mike,Enzi,Republican,Wyoming,http://www.enzi.senate.gov/
+E000295,Joni,Ernst,Republican,Iowa,http://www.ernst.senate.gov/
+F000062,Dianne,Feinstein,Democratic,California,http://www.feinstein.senate.gov/
+F000463,Deb,Fischer,Republican,Nebraska,http://www.fischer.senate.gov/
+F000444,Jeff,Flake,Republican,Arizona,http://www.flake.senate.gov/
+F000457,Al,Franken,Democratic,Minnesota,http://www.franken.senate.gov/
+G000562,Cory,Gardner,Republican,Colorado,http://www.gardner.senate.gov/
+G000555,Kirsten,Gillibrand,Democratic,New York,http://www.gillibrand.senate.gov/
+G000359,Lindsey,Graham,Republican,South Carolina,http://www.lgraham.senate.gov/
+G000386,Chuck,Grassley,Republican,Iowa,http://www.grassley.senate.gov/
+H000338,Orrin,Hatch,Republican,Utah,http://www.hatch.senate.gov/
+H001046,Martin,Heinrich,Democratic,New Mexico,http://www.heinrich.senate.gov/
+H001069,Heidi,Heitkamp,Democratic,North Dakota,http://www.heitkamp.senate.gov/
+H001041,Dean,Heller,Republican,Nevada,http://www.heller.senate.gov/
+H001042,Mazie,Hirono,Democratic,Hawaii,http://www.hirono.senate.gov/
+H001061,John,Hoeven,Republican,North Dakota,http://www.hoeven.senate.gov/
+I000024,Jim,Inhofe,Republican,Oklahoma,http://www.inhofe.senate.gov/
+I000055,Johnny,Isakson,Republican,Georgia,http://www.isakson.senate.gov/
+J000293,Ron,Johnson,Republican,Wisconsin,http://www.ronjohnson.senate.gov/
+K000384,Tim,Kaine,Democratic,Virginia,http://www.kaine.senate.gov/
+K000383,Angus,King,Independent,Maine,http://www.king.senate.gov/
+K000360,Mark,Kirk,Republican,Illinois,
+K000367,Amy,Klobuchar,Democratic,Minnesota,http://www.klobuchar.senate.gov/
+L000575,James,Lankford,Republican,Oklahoma,http://www.lankford.senate.gov/
+L000174,Patrick,Leahy,Democratic,Vermont,http://www.leahy.senate.gov/
+M001183,Joe,Manchin,Democratic,West Virginia,http://www.manchin.senate.gov/
+M000133,Ed,Markey,Democratic,Massachusetts,http://www.markey.senate.gov/
+M000303,John,McCain,Republican,Arizona,http://www.mccain.senate.gov/
+M001170,Claire,McCaskill,Democratic,Missouri,http://www.mccaskill.senate.gov/
+M000355,Mitch,McConnell,Republican,Kentucky,http://www.mcconnell.senate.gov/
+M000639,Bob,Menendez,Democratic,New Jersey,http://www.menendez.senate.gov/
+M001176,Jeff,Merkley,Democratic,Oregon,http://www.merkley.senate.gov/
+M000702,Barbara,Mikulski,Democratic,Maryland,
+C001047,Shelley,Moore,Republican,West Virginia,
+M000934,Jerry,Moran,Republican,Kansas,http://www.moran.senate.gov/
+M001153,Lisa,Murkowski,Republican,Alaska,http://www.murkowski.senate.gov/
+M001169,Chris,Murphy,Democratic,Connecticut,http://www.murphy.senate.gov/
+M001111,Patty,Murray,Democratic,Washington,http://www.murray.senate.gov/
+N000032,Bill,Nelson,Democratic,Florida,http://www.billnelson.senate.gov/
+P000603,Rand,Paul,Republican,Kentucky,http://www.paul.senate.gov/
+P000612,David,Perdue,Republican,Georgia,http://www.perdue.senate.gov/
+P000595,Gary,Peters,Democratic,Michigan,http://www.peters.senate.gov/
+P000449,Rob,Portman,Republican,Ohio,http://www.portman.senate.gov/
+R000122,Jack,Reed,Democratic,Rhode Island,http://www.reed.senate.gov/
+R000146,Harry,Reid,Democratic,Nevada,
+R000584,Jim,Risch,Republican,Idaho,http://www.risch.senate.gov/
+R000307,Pat,Roberts,Republican,Kansas,http://www.roberts.senate.gov/
+R000605,Mike,Rounds,Republican,South Dakota,http://www.rounds.senate.gov/
+R000595,Marco,Rubio,Republican,Florida,http://www.rubio.senate.gov/
+L000577,Michael,Lee,Republican,Utah,http://www.lee.senate.gov/
+S000033,Bernie,Sanders,Independent,Vermont,http://www.sanders.senate.gov/
+S001197,Ben,Sasse,Republican,Nebraska,http://www.sasse.senate.gov/
+S001194,Brian,Schatz,Democratic,Hawaii,http://www.schatz.senate.gov/
+S000148,Chuck,Schumer,Democratic,New York,http://www.schumer.senate.gov/
+S001184,Tim,Scott,Republican,South Carolina,http://www.scott.senate.gov/
+S001141,Jeff,Sessions,Republican,Alabama,
+S001181,Jeanne,Shaheen,Democratic,New Hampshire,http://www.shaheen.senate.gov/
+S000320,Richard,Shelby,Republican,Alabama,http://www.shelby.senate.gov/
+S000770,Debbie,Stabenow,Democratic,Michigan,http://www.stabenow.senate.gov/
+S001198,Dan,Sullivan,Republican,Alaska,http://www.sullivan.senate.gov/
+T000464,Jon,Tester,Democratic,Montana,http://www.tester.senate.gov/
+T000250,John,Thune,Republican,South Dakota,http://www.thune.senate.gov/
+T000476,Thom,Tillis,Republican,North Carolina,http://www.tillis.senate.gov/
+T000461,Pat,Toomey,Republican,Pennsylvania,http://www.toomey.senate.gov/
+U000039,Tom,Udall,Democratic,New Mexico,http://www.tomudall.senate.gov/
+V000127,David,Vitter,Republican,Louisiana,
+W000805,Mark,Warner,Democratic,Virginia,http://www.warner.senate.gov/
+W000817,Elizabeth,Warren,Democratic,Massachusetts,http://www.warren.senate.gov/
+W000802,Sheldon,Whitehouse,Democratic,Rhode Island,http://www.whitehouse.senate.gov/
+W000437,Roger,Wicker,Republican,Mississippi,http://www.wicker.senate.gov/
+W000779,Ron,Wyden,Democratic,Oregon,http://www.wyden.senate.gov/
