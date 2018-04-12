@@ -45,6 +45,7 @@ app.post('/insert', function(request, response) {
   var party = body.party;
   var website = body.website;
   var newquery = `INSERT INTO senators VALUE (${senID}, ${fname}, ${lname}, ${state}, ${party}, ${website})`;
+  console.log(newquery);
 });
 
 app.listen(app.get('port'), function() {
