@@ -1,5 +1,5 @@
 var express = require('express');
-var body-parser = require('body-parser')
+var bodyParser = require('body-parser')
 var pg = require('pg');
 var app = express();
 
