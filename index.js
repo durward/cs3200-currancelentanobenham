@@ -36,8 +36,7 @@ app.get('/', function(request, response) {
           console.error(err);
           response.sent("Error " + err);
         } else {
-          console.log("SUCCESS!")
-          // response.render('pages/main-page', {senators: result.rows});
+          response.render('pages/main-page', {senators: result.rows});
         }
       })
     });
