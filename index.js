@@ -59,7 +59,7 @@ app.post('/insert', function(request, response) {
       done();
       if (err) {
         console.error(err);
-        response.sent("Error " + err);
+        // response.sent("Error " + err);
       } else {
         console.log(result)
         // response.render('pages/main-page', {senators: result.rows});
