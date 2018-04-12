@@ -28,27 +28,36 @@ app.get('/', function(request, response) {
     console.log("Main page");
 
     response.render('pages/main-page', {senators: false});
-
-    // var senatorsquery = 'SELECT * FROM senators;'
-    //
-    // pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    //   client.query(senatorsquery, function(err, result) {
-    //     done();
-    //     if (err) {
-    //       console.error(err);
-    //       response.sent("Error " + err);
-    //     } else {
-    //       response.render('pages/main-page', {senators: result.rows});
-    //     }
-    //   })
-    // });
 });
 
 app.post('/search', function(request, response) {
+  var senatorsquery = 'SELECT * FROM senators;';
+  if(request.body) {
+    var fname = request.body.fname;
+    senatorsquery = `SELECT * FROM senators WHERE fname = '${fname}';`;
+  }
 
-    var senatorsquery = 'SELECT * FROM senators;';
+  reloadhomepage(response, senatorsquery);
+});
 
-    reloadhomepage(response, senatorsquery);
+app.post('/delete', function(request, response) {
+  var senid = request.body.id;
+  var newquery = `DELETE FROM senators WHERE senid = '${senid}';`;
+  console.log(newquery);
+
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(newquery, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        // response.sent("Error " + err);
+      } else {
+
+        var senatorsquery = 'SELECT * FROM senators;'
+        reloadhomepage(response);
+      }
+    })
+  });
 });
 
 app.post('/insert', function(request, response) {
