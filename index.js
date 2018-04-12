@@ -37,7 +37,8 @@ app.get('/', function(request, response) {
 });
 
 app.post('/insert', function(request, response) {
-  console.log(request)
+  console.log(request.body);
+  console.log(request.getElementById("insert-id"));
   var body = request.body;
   var senID = body.id;
   var fname = body.fname;
