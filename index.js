@@ -51,7 +51,7 @@ app.post('/insert', function(request, response) {
   var state = body.state;
   var party = body.party;
   var website = body.website;
-  var newquery = `INSERT INTO senators VALUE (${senID}, ${fname}, ${lname}, ${state}, ${party}, ${website})`;
+  var newquery = `INSERT INTO senators VALUES (${senID}, ${fname}, ${lname}, ${state}, ${party}, ${website})`;
   console.log(newquery);
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
