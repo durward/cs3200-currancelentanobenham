@@ -30,6 +30,23 @@ app.get('/', function(request, response) {
     response.render('pages/main-page', {senators: false});
 });
 
+// app.get('/senator/:id', function(request, response) {
+//   var id = request.params.id;
+//   var joinquery = `SELECT * FROM senator s JOIN billsponsors b ON (s.senid = j.senid) WHERE senid = '${}';`;
+//
+//   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+//     client.query(senatorsquery, function(err, result) {
+//       done();
+//       if (err) {
+//         console.error(err);
+//         response.sent("Error " + err);
+//       } else {
+//         response.render('pages/senator/:id', {results: result.rows});
+//       }
+//     })
+//   });
+// });
+
 app.post('/search', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
   if(request.body.fname !== "") {
