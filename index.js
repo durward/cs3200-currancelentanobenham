@@ -27,7 +27,7 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
     console.log("Main page");
 
-    response.render('pages/main-page', {senators: NULL});
+    response.render('pages/main-page', {senators: false});
 
     // var senatorsquery = 'SELECT * FROM senators;'
     //
