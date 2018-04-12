@@ -17,7 +17,7 @@
       </tr>
       <% senators.forEach(function(r) { %>
       <tr>
-        <td> <%= r.senid %> </td>
+        <td> <a href='/senator/<%= r.senid %>'><%= r.senid %></a> </td>
         <td> <%= r.fname %> </td>
         <td> <%= r.lname %> </td>
         <td> <%= r.state %> </td>
