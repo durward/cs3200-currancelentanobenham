@@ -36,7 +36,7 @@ app.get('/', function(request, response) {
           console.error(err);
           response.sent("Error " + err);
         } else {
-          console.log("SUCCESS!");
+          console.log("SUCCESS!")
           // response.render('pages/main-page', {senators: result.rows});
         }
       })
@@ -62,7 +62,8 @@ app.post('/insert', function(request, response) {
         console.error(err);
         response.sent("Error " + err);
       } else {
-        response.render('pages/main-page', {senators: result.rows});
+        console.log("SUCCESS!")
+        // response.render('pages/main-page', {senators: result.rows});
       }
     })
   });
