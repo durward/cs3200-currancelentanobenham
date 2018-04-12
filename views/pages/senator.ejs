@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+    <h1>Information for <%= results[0].fname %> <%= results[0].lname %></h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>State</th>
+        <th>Party</th>
+        <th>Website</th>
+      </tr>
+      <tr>
+        <td> <%= results[0].senid %> </td>
+        <td> <%= results[0].fname %> </td>
+        <td> <%= results[0].lname %> </td>
+        <td> <%= results[0].state %> </td>
+        <td> <%= results[0].party %> </td>
+        <td> <%= results[0].website %> </td>
+      </tr>
+    </table>
+    <h1>Sponsored Bills</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Bill Name</th>
+        <th>Date of Introduction</th>
+        <th>Most Recent Action</th>
+        <th>Most Recent Action Date</th>
+      </tr>
+      <% results.forEach(function(r) { %>
+      <tr>
+        <td> <%= r.billid %> </td>
+        <td> <%= r.billname %> </td>
+        <td> <%= r.introduceddate %> </td>
+        <td> <%= r.recentaction %> </td>
+        <td> <%= r.recentactiondate %> </td>
+      </tr>
+      <% }); %>
+    </table>
+</body>
+</html>
