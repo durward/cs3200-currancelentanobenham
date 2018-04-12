@@ -54,7 +54,7 @@ app.post('/delete', function(request, response) {
       } else {
 
         var senatorsquery = 'SELECT * FROM senators;'
-        reloadhomepage(response);
+        // reloadhomepage(response);
       }
     })
   });
@@ -80,7 +80,7 @@ app.post('/insert', function(request, response) {
       } else {
 
         var senatorsquery = 'SELECT * FROM senators;'
-        reloadhomepage(response);
+        // reloadhomepage(response);
       }
     })
   });
