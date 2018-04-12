@@ -1,4 +1,5 @@
 var express = require('express');
+var body-parser = require('body-parser')
 var pg = require('pg');
 var app = express();
 
@@ -12,7 +13,11 @@ var userid = 1;
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
-app.use(express.bodyParser());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
