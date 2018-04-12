@@ -36,5 +36,16 @@ app.get('/', function(request, response) {
     });
 });
 
+app.post('/insert' function(request, response) {
+  var body = request.body;
+  var senID = body.id;
+  var fname = body.fname;
+  var lname = body.lname;
+  var state = body.state;
+  var party = body.party;
+  var website = body.website;
+  var newquery = `INSERT INTO senators VALUE (${senID}, ${fname}, ${lname}, ${state}, ${party}, ${website})`;
+});
+
 app.listen(app.get('port'), function() {
 });
