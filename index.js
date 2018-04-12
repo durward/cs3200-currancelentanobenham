@@ -32,7 +32,7 @@ app.get('/', function(request, response) {
 
 app.post('/search', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
-  if(request.body) {
+  if(request.body !== "") {
     var fname = request.body.fname;
     senatorsquery = `SELECT * FROM senators WHERE fname = '${fname}';`;
   }
