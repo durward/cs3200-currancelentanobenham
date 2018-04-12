@@ -32,7 +32,7 @@ app.get('/', function(request, response) {
 
 app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
-  var joinquery = `SELECT * FROM senators s, bills b, billsponsors bs WHERE s.senid = bs.senid AND b.billid = bs.billid AND senid = '${}';`;
+  var joinquery = `SELECT * FROM senators s, bills b, billsponsors bs WHERE s.senid = bs.senid AND b.billid = bs.billid AND senid = '${id}';`;
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(senatorsquery, function(err, result) {
