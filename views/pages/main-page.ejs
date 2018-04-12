@@ -24,14 +24,14 @@
         <td> <%= r.website %> </td>
       </tr>
       <% }); %>
-      <tr id="insert-form">
+      <tr>
         <form action="/insert" method="post">
-          <td> <input type="text" name="id" placeholder="ID"> </td>
-          <td> <input type="text" name="fname" placeholder="First Name"> </td>
-          <td> <input type="text" name="lname" placeholder="Last Name"> </td>
-          <td> <input type="text" name="state" placeholder="State"> </td>
-          <td> <input type="text" name="party" placeholder="Party"> </td>
-          <td> <input type="text" name="website" placeholder="Website"> </td>
+          <td> <input type="text" id="insert-id" name="id" placeholder="ID"> </td>
+          <td> <input type="text" id="insert-fname" name="fname" placeholder="First Name"> </td>
+          <td> <input type="text" id="insert-lname" name="lname" placeholder="Last Name"> </td>
+          <td> <input type="text" id="insert-state" name="state" placeholder="State"> </td>
+          <td> <input type="text" id="insert-party" name="party" placeholder="Party"> </td>
+          <td> <input type="text" id="insert-website" name="website" placeholder="Website"> </td>
           <td> <input type="submit" value="Insert"> </td>
         </form>
       <tr>
