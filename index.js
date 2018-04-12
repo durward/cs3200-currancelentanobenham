@@ -48,7 +48,7 @@ app.post('/search', function(request, response) {
 
     var senatorsquery = 'SELECT * FROM senators;';
 
-    reloadhomepage(result, senatorsquery);
+    reloadhomepage(response, senatorsquery);
 });
 
 app.post('/insert', function(request, response) {
