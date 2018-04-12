@@ -43,7 +43,7 @@ app.get('/', function(request, response) {
 });
 
 app.post('/insert', function(request, response) {
-  console.log(request.body);
+  console.log(response);
   var body = request.body;
   var senID = body.id;
   var fname = body.fname;
@@ -61,7 +61,7 @@ app.post('/insert', function(request, response) {
         console.error(err);
         response.sent("Error " + err);
       } else {
-        console.log("SUCCESS!")
+        console.log(result)
         // response.render('pages/main-page', {senators: result.rows});
       }
     })
