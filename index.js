@@ -36,7 +36,8 @@ app.get('/', function(request, response) {
           console.error(err);
           response.sent("Error " + err);
         } else {
-          response.render('pages/main-page', {senators: result.rows});
+          console.log("SUCCESS!");
+          // response.render('pages/main-page', {senators: result.rows});
         }
       })
     });
@@ -53,6 +54,18 @@ app.post('/insert', function(request, response) {
   var website = body.website;
   var newquery = `INSERT INTO senators VALUE (${senID}, ${fname}, ${lname}, ${state}, ${party}, ${website})`;
   console.log(newquery);
+
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(newquery, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        response.sent("Error " + err);
+      } else {
+        response.render('pages/main-page', {senators: result.rows});
+      }
+    })
+  });
 });
 
 app.listen(app.get('port'), function() {
