@@ -4,6 +4,7 @@
 </head>
 
 <body>
+  <% if(senators){ %>
     <h1>List of Senators</h1>
     <table>
       <tr>
@@ -26,15 +27,27 @@
       <% }); %>
       <tr>
         <form action="/insert" method="post">
-          <td> <input type="text" id="insert-id" name="id" placeholder="ID"> </td>
-          <td> <input type="text" id="insert-fname" name="fname" placeholder="First Name"> </td>
-          <td> <input type="text" id="insert-lname" name="lname" placeholder="Last Name"> </td>
-          <td> <input type="text" id="insert-state" name="state" placeholder="State"> </td>
-          <td> <input type="text" id="insert-party" name="party" placeholder="Party"> </td>
-          <td> <input type="text" id="insert-website" name="website" placeholder="Website"> </td>
+          <td> <input type="text" name="id" placeholder="ID"> </td>
+          <td> <input type="text" name="fname" placeholder="First Name"> </td>
+          <td> <input type="text" name="lname" placeholder="Last Name"> </td>
+          <td> <input type="text" name="state" placeholder="State"> </td>
+          <td> <input type="text" name="party" placeholder="Party"> </td>
+          <td> <input type="text" name="website" placeholder="Website"> </td>
           <td> <input type="submit" value="Insert"> </td>
         </form>
       <tr>
     </table>
+  <% } else{ %>
+    <h1>Search Senators</h1>
+    <form action="/search" method="post">
+      <td> <input type="text" name="fname" placeholder="First Name"> </td>
+      <td> <input type="submit" value="Search"> </td>
+    </form>
+    <h1>Remove A senator</h1>
+    <form action="/delete" method="post">
+      <td> <input type="text" name="fname" placeholder="ID"> </td>
+      <td> <input type="submit" value="Delete"> </td>
+    </form>
+  <% } %>
 </body>
 </html>

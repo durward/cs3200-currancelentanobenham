@@ -43,7 +43,6 @@ app.get('/', function(request, response) {
 });
 
 app.post('/insert', function(request, response) {
-  console.log(response);
   var body = request.body;
   var senID = body.id;
   var fname = body.fname;
@@ -61,12 +60,27 @@ app.post('/insert', function(request, response) {
         console.error(err);
         // response.sent("Error " + err);
       } else {
-        console.log(result)
-        // response.render('pages/main-page', {senators: result.rows});
+
+        var senatorsquery = 'SELECT * FROM senators;'
+        reloadhomepage(response);
       }
     })
   });
 });
+
+function reloadhomepage(response, senatorsquery) {}
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(senatorsquery, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        response.sent("Error " + err);
+      } else {
+        response.render('pages/main-page', {senators: result.rows});
+      }
+    })
+  });
+}
 
 app.listen(app.get('port'), function() {
 });
