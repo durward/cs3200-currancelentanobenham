@@ -32,14 +32,14 @@ app.get('/', function(request, response) {
 
 app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
-  var joinquery = `SELECT * FROM senators s, bills b, billsponsors bs WHERE s.senid = bs.senid AND b.billid = bs.billid AND senid = '${id}';`;
+  var joinquery = `SELECT * FROM senators s, bills b, billsponsors bs WHERE s.senid = bs.senid AND b.billid = bs.billid AND s.senid = '${id}';`;
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(joinquery, function(err, result) {
       done();
       if (err) {
         console.error(err);
-        response.sent("Error " + err);
+        // response.sent("Error " + err);
       } else {
         response.render('pages/senator', {results: result.rows});
       }
