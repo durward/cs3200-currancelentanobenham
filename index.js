@@ -27,6 +27,8 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
     console.log("Main page");
 
+    response.render('pages/main-page', {senators: NULL});
+
     // var senatorsquery = 'SELECT * FROM senators;'
     //
     // pg.connect(process.env.DATABASE_URL, function(err, client, done) {
