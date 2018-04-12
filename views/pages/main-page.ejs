@@ -24,15 +24,17 @@
         <td> <%= r.website %> </td>
       </tr>
       <% }); %>
-      <form action="/insert" method="post">
-        <tr> <input type="text" name="id"> </tr>
-        <tr> <input type="text" name="fname"> </tr>
-        <tr> <input type="text" name="lname"> </tr>
-        <tr> <input type="text" name="state"> </tr>
-        <tr> <input type="text" name="party"> </tr>
-        <tr> <input type="text" name="website"> </tr>
-        <tr> <input type="submit" value="submit"> </tr>
-      </form>
+      <tr>
+        <form action="/insert" method="post">
+          <td> <input type="text" name="id"> </td>
+          <td> <input type="text" name="fname"> </td>
+          <td> <input type="text" name="lname"> </td>
+          <td> <input type="text" name="state"> </td>
+          <td> <input type="text" name="party"> </td>
+          <td> <input type="text" name="website"> </td>
+          <td> <input type="submit" value="submit"> </td>
+        </form>
+      <tr>
     </table>
 </body>
 </html>
