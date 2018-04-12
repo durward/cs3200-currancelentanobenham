@@ -27,19 +27,26 @@ app.set('view engine', 'ejs');
 app.get('/', function(request, response) {
     console.log("Main page");
 
-    var senatorsquery = 'SELECT * FROM senators;'
+    // var senatorsquery = 'SELECT * FROM senators;'
+    //
+    // pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    //   client.query(senatorsquery, function(err, result) {
+    //     done();
+    //     if (err) {
+    //       console.error(err);
+    //       response.sent("Error " + err);
+    //     } else {
+    //       response.render('pages/main-page', {senators: result.rows});
+    //     }
+    //   })
+    // });
+});
 
-    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      client.query(senatorsquery, function(err, result) {
-        done();
-        if (err) {
-          console.error(err);
-          response.sent("Error " + err);
-        } else {
-          response.render('pages/main-page', {senators: result.rows});
-        }
-      })
-    });
+app.post('/search', function(request, response) {
+
+    var senatorsquery = 'SELECT * FROM senators;';
+
+    reloadhomepage(result, senatorsquery);
 });
 
 app.post('/insert', function(request, response) {
@@ -68,7 +75,7 @@ app.post('/insert', function(request, response) {
   });
 });
 
-function reloadhomepage(response, senatorsquery) {}
+function reloadhomepage(response, senatorsquery) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(senatorsquery, function(err, result) {
       done();
