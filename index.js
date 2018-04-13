@@ -135,7 +135,7 @@ app.get('/search-api', function(request, response) {
       if (err) {
         console.error(err);
       } else {
-        response.json(result.rows);
+        response.json({senators: result.rows});
       }
     })
   });
