@@ -19,7 +19,7 @@ module.exports = {
   removeSenator: removeSenator
 };
 
-function getAllPuppies(req, res, next) {
+function getAllSenators(req, res, next) {
   db.any('select * from senators')
     .then(function (data) {
       res.status(200)

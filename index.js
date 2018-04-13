@@ -141,25 +141,25 @@ module.exports = router;
 
 
 
-app.get('/api/senators/:type/:id', function(request, response) {
-  var senatorsquery = 'SELECT * FROM senators;';
-  var type = request.params.type;
-  var id = request.params.id;
-  console.log(request.params.type);
-  console.log(request.params);
-  if(id !== "") {
-    var fname = request.body.fname;
-    senatorsquery = `SELECT * FROM senators WHERE ${type} = '${id}';`;
-  }
-  console.log(senatorsquery);
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query(senatorsquery, function(err, result) {
-      done();
-      if (err) {
-        console.error(err);
-      } else {
-        response.json({senators: result.rows});
-      }
-    })
-  });
-});
+// app.get('/api/senators/:type/:id', function(request, response) {
+//   var senatorsquery = 'SELECT * FROM senators;';
+//   var type = request.params.type;
+//   var id = request.params.id;
+//   console.log(request.params.type);
+//   console.log(request.params);
+//   if(id !== "") {
+//     var fname = request.body.fname;
+//     senatorsquery = `SELECT * FROM senators WHERE ${type} = '${id}';`;
+//   }
+//   console.log(senatorsquery);
+//   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+//     client.query(senatorsquery, function(err, result) {
+//       done();
+//       if (err) {
+//         console.error(err);
+//       } else {
+//         response.json({senators: result.rows});
+//       }
+//     })
+//   });
+// });
