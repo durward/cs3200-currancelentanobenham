@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.use()
+
 // views is directory for all template files
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -120,7 +122,24 @@ function reloadhomepage(response, senatorsquery) {
 app.listen(app.get('port'), function() {
 });
 
+
+
 // API CALLS
+var router = express.Router();
+
+var db = require('queries');
+
+
+router.get('/api/senators', db.getAllSenators);
+router.get('/api/senators/:id', db.getSingleSenator);
+router.post('/api/senators', db.createSenator);
+router.put('/api/senators/:id', db.updateSenator);
+router.delete('/api/senators/:id', db.removeSenator);
+
+module.exports = router;
+
+
+
 
 app.get('/api/senators/:type/:id', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
