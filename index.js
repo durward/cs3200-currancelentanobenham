@@ -124,6 +124,7 @@ app.listen(app.get('port'), function() {
 
 app.get('/search-api', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
+  console.log(request.body);
   if(request.body.fname !== "") {
     var fname = request.body.fname;
     senatorsquery = `SELECT * FROM senators WHERE fname = '${fname}';`;
