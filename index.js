@@ -132,7 +132,7 @@ app.get('/api/senators/:type/:id', function(request, response) {
     var fname = request.body.fname;
     senatorsquery = `SELECT * FROM senators WHERE ${type} = '${id}';`;
   }
-
+  console.log(senatorsquery);
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(senatorsquery, function(err, result) {
       done();
