@@ -126,7 +126,8 @@ app.get('/api/senators/:type/:id', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
   var type = request.params.type;
   var id = request.params.id;
-  console.log(request.body);
+  console.log(request.params.type);
+  console.log(request.params);
   if(id !== "") {
     var fname = request.body.fname;
     senatorsquery = `SELECT * FROM senators WHERE ${type} = '${id}';`;
