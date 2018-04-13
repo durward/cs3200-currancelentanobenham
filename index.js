@@ -125,7 +125,7 @@ app.listen(app.get('port'), function() {
 // API CALLS
 var router = express.Router();
 
-var db = require('queries.js');
+var db = require('../queries');
 
 
 router.get('/api/senators', db.getAllSenators);
