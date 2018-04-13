@@ -122,13 +122,15 @@ app.listen(app.get('port'), function() {
 
 // API CALLS
 
-app.get('/search-api', function(request, response) {
+app.get('/api/senators/:type/:id', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
-  // console.log(request.body);
-  // if(request.body.fname !== "") {
-  //   var fname = request.body.fname;
-  //   senatorsquery = `SELECT * FROM senators WHERE fname = '${fname}';`;
-  // }
+  var type = request.params.type;
+  var id = request.params.id;
+  console.log(request.body);
+  if(id !== "") {
+    var fname = request.body.fname;
+    senatorsquery = `SELECT * FROM senators WHERE ${type} = '${id}';`;
+  }
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(senatorsquery, function(err, result) {
