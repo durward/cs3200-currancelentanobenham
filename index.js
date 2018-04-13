@@ -134,9 +134,8 @@ app.get('/search-api', function(request, response) {
       done();
       if (err) {
         console.error(err);
-        return err;
       } else {
-        return result.rows;
+        response.json(result.rows);
       }
     })
   });
