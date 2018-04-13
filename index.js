@@ -122,7 +122,7 @@ app.listen(app.get('port'), function() {
 
 // API CALLS
 
-app.post('/search-api', function(request, response) {
+app.get('/search-api', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
   if(request.body.fname !== "") {
     var fname = request.body.fname;
