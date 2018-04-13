@@ -119,3 +119,25 @@ function reloadhomepage(response, senatorsquery) {
 
 app.listen(app.get('port'), function() {
 });
+
+// API CALLS
+
+app.post('/search-api', function(request, response) {
+  var senatorsquery = 'SELECT * FROM senators;';
+  if(request.body.fname !== "") {
+    var fname = request.body.fname;
+    senatorsquery = `SELECT * FROM senators WHERE fname = '${fname}';`;
+  }
+
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(senatorsquery, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        return err;
+      } else {
+        return result.rows;
+      }
+    })
+  });
+});
