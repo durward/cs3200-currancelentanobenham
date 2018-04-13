@@ -124,11 +124,11 @@ app.listen(app.get('port'), function() {
 
 app.get('/search-api', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
-  console.log(request.body);
-  if(request.body.fname !== "") {
-    var fname = request.body.fname;
-    senatorsquery = `SELECT * FROM senators WHERE fname = '${fname}';`;
-  }
+  // console.log(request.body);
+  // if(request.body.fname !== "") {
+  //   var fname = request.body.fname;
+  //   senatorsquery = `SELECT * FROM senators WHERE fname = '${fname}';`;
+  // }
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(senatorsquery, function(err, result) {
