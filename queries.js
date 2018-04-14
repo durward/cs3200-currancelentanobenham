@@ -26,7 +26,7 @@ function getAllSenators(req, res, next) {
         .json({
           status: 'success',
           data: data,
-          message: 'Retrieved ALL puppies'
+          message: 'Retrieved ALL senators'
         });
     })
     .catch(function (err) {

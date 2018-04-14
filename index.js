@@ -23,6 +23,8 @@ app.use(bodyParser.json());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.use('/', routes);
+
 // index node
 app.get('/', function(request, response) {
     console.log("Main page");
