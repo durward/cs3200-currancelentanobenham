@@ -73,9 +73,13 @@ function createSenator(req, res, next) {
 }
 
 function updateSenator(req, res, next) {
-  db.none("update senators set fname='$1', lname='$2', state='$3', party='$4', website='$5' where senid='$6'",
-    [req.body.fname, req.body.lname, req.body.state,
-      req.body.party, req.body.website, req.params.id])
+  var fname = req.body.fname;
+  var lname = req.body.lname;
+  var state = req.body.state;
+  var party = req.body.party;
+  var website = req.body.website;
+  var senid = req.params.id;
+  db.none(`update senators set fname='${fname}', lname='${lname}', state='${state}', party='${party}', website='${website}' where senid='${senid}'`)
     .then(function () {
       res.status(200)
         .json({
