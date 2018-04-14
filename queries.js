@@ -52,7 +52,7 @@ function getSingleSenator(req, res, next) {
 
 function createSenator(req, res, next) {
   db.none('insert into senators' +
-      "values('${senid}', '${fname}', '${lname}', '${state}', '${party}', ${'website}')",
+      "values('${senid}', '${fname}', '${lname}', '${state}', '${party}', '${website}')",
     req.body)
     .then(function () {
       res.status(200)
