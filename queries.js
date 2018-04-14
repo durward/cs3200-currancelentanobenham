@@ -93,14 +93,14 @@ function updateSenator(req, res, next) {
 }
 
 function removeSenator(req, res, next) {
-  var senID = parseInt(req.params.id);
+  var senID = req.params.id;
   db.result(`delete from senators where senid = '${senID}'`)
     .then(function (result) {
       /* jshint ignore:start */
       res.status(200)
         .json({
           status: 'success',
-          message: `Removed ${result.rowCount} senator`
+          message: `Removed senator ${senID}`
         });
       /* jshint ignore:end */
     })
