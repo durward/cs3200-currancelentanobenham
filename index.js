@@ -33,6 +33,10 @@ app.get('/', function(request, response) {
     response.render('pages/main-page', {senators: false});
 });
 
+app.get('/api', function(request, response) {
+
+    response.render('pages/api');
+});
 app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senators s, bills b, billsponsors bs WHERE s.senid = bs.senid AND b.billid = bs.billid AND s.senid = '${id}';`;
