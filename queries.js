@@ -51,6 +51,7 @@ function getSingleSenator(req, res, next) {
 }
 
 function createSenator(req, res, next) {
+  console.log(req.body);
   var senid = req.body.senid;
   var senid = req.body.fname;
   var senid = req.body.lname;
