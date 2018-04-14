@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var pg = require('pg');
 var app = express();
+var routes = require('./routes/index');
 
 var response = function(res) { console.log(res); };
 var logError = function(err) { console.log(err); };
