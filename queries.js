@@ -36,7 +36,7 @@ function getAllSenators(req, res, next) {
 
 function getSingleSenator(req, res, next) {
   var senID = req.params.id;
-  db.one(`select * from senators where senid = ${senID}`)
+  db.one(`select * from senators where senid = '${senID}'`)
     .then(function (data) {
       res.status(200)
         .json({
@@ -51,9 +51,8 @@ function getSingleSenator(req, res, next) {
 }
 
 function createSenator(req, res, next) {
-  req.body.age = parseInt(req.body.age);
   db.none('insert into senators' +
-      'values(${senid}, ${fname}, ${lname}, ${state}, ${party}, ${website})',
+      "values('${senid}', '${fname}', '${lname}', '${state}', '${party}', ${'website}')",
     req.body)
     .then(function () {
       res.status(200)
@@ -68,7 +67,7 @@ function createSenator(req, res, next) {
 }
 
 function updateSenator(req, res, next) {
-  db.none('update senators set fname=$1, lname=$2, state=$3, party=$4, website=$5 where senid=$6',
+  db.none("update senators set fname='$1', lname='$2', state='$3', party='$4', website='$5' where senid='$6'",
     [req.body.fname, req.body.lname, req.body.state,
       req.body.party, req.body.website, req.params.id])
     .then(function () {
@@ -85,7 +84,7 @@ function updateSenator(req, res, next) {
 
 function removeSenator(req, res, next) {
   var senID = parseInt(req.params.id);
-  db.result(`delete from pups where senid = ${senID}`)
+  db.result(`delete from pups where senid = '${senID}'`)
     .then(function (result) {
       /* jshint ignore:start */
       res.status(200)
