@@ -51,9 +51,14 @@ function getSingleSenator(req, res, next) {
 }
 
 function createSenator(req, res, next) {
-  db.none('insert into senators' +
-      "values(${senid}, ${fname}, ${lname}, ${state}, ${party}, ${website})",
-    req.body)
+  var senid = req.body.senid;
+  var senid = req.body.fname;
+  var senid = req.body.lname;
+  var senid = req.body.state;
+  var senid = req.body.party;
+  var senid = req.body.website;
+
+  db.none(`insert into senators values('${senid}', '${fname}', '${lname}', '${state}', '${party}', '${website}')`)
     .then(function () {
       res.status(200)
         .json({
