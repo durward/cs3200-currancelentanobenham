@@ -13,10 +13,10 @@ var db = pgp(connectionString);
 
 module.exports = {
   getAllSenators: getAllSenators,
-  getSingleSenator: getSingleSenator,
-  createSenator: createSenator,
-  updateSenator: updateSenator,
-  removeSenator: removeSenator
+  // getSingleSenator: getSingleSenator,
+  // createSenator: createSenator,
+  // updateSenator: updateSenator,
+  // removeSenator: removeSenator
 };
 
 function getAllSenators(req, res, next) {
