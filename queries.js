@@ -84,7 +84,7 @@ function updateSenator(req, res, next) {
       res.status(200)
         .json({
           status: 'success',
-          message: 'Updated senator ' + req.params.senid
+          message: 'Updated senator ' + req.params.id
         });
     })
     .catch(function (err) {
@@ -94,7 +94,7 @@ function updateSenator(req, res, next) {
 
 function removeSenator(req, res, next) {
   var senID = parseInt(req.params.id);
-  db.result(`delete from pups where senid = '${senID}'`)
+  db.result(`delete from senators where senid = '${senID}'`)
     .then(function (result) {
       /* jshint ignore:start */
       res.status(200)
