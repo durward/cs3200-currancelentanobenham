@@ -35,7 +35,7 @@ function getAllSenators(req, res, next) {
 }
 
 function getSingleSenator(req, res, next) {
-  var senID = parseInt(req.params.id);
+  var senID = req.params.id;
   db.one(`select * from senators where senid = ${senID}`)
     .then(function (data) {
       res.status(200)
