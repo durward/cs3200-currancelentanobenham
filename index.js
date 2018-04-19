@@ -209,22 +209,19 @@ app.get('/bill/:id', function(request, response) {
         // response.sent("Error " + err);
       } else {
         billdata = result.rows;
-        console.log(billdata);
+        client.query(query2, function(err, result) {
+          done();
+          if (err) {
+            console.error(err);
+            // response.sent("Error " + err);
+          } else {
+            votedata = result.rows;
+            console.log(billdata);
+            response.render('pages/bill', {bill: billdata, votes: votedata});
+          }
+        })
       }
     })
-
-    client.query(query2, function(err, result) {
-      done();
-      if (err) {
-        console.error(err);
-        // response.sent("Error " + err);
-      } else {
-        votedata = result.rows;
-      }
-    })
-
-    console.log(billdata);
-    response.render('pages/bill', {bill: billdata, votes: votedata});
   });
 });
 
