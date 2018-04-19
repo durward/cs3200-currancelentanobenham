@@ -43,6 +43,7 @@ app.get('/senator/:id', function(request, response) {
   console.log(`Checking for senator ${id}`);
   app.post(`/api/senators/${id}`, function(request, response) {
     console.log(`Results for senator ${id}`);
+    console.log("response");
     console.log(response);
         if (!err && response.statusCode == 200) {
           console.log(`Works for senator ${id}`);
