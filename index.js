@@ -84,7 +84,7 @@ app.post('/senator/:id', function(request, response) {
 
   if (senID == "" || fname == "" || lname == "" || state == "" || party == "") {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-      reloadsenatorpage(client, response, joinquery,
+      reloadsenatorpage(done, client, response, joinquery,
         "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
     });
   } else {
@@ -95,17 +95,17 @@ app.post('/senator/:id', function(request, response) {
         if (err) {
           console.error(err);
           // response.sent("Error " + err);
-          reloadsenatorpage(client, response, joinquery,
+          reloadsenatorpage(done, client, response, joinquery,
             "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
         } else {
-          reloadsenatorpage(client, response, joinquery, false);
+          reloadsenatorpage(done, client, response, joinquery, false);
         }
       })
     });
   }
 });
 
-function reloadsenatorpage(client, response, joinquery, error) {
+function reloadsenatorpage(done, client, response, joinquery, error) {
   client.query(joinquery, function(err, result) {
     done();
     if (err) {
