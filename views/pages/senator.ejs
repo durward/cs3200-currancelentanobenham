@@ -38,6 +38,9 @@
         <% } %>
       </tr>
     </table>
+    <% if(errormsg){ %>
+      <p style="color: red;"><%= errormsg %></p>
+    <% } %>
     <h1>Sponsored Bills</h1>
     <table>
       <tr>

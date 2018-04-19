@@ -64,7 +64,7 @@ app.get('/senator/:id', function(request, response) {
         console.error(err);
         // response.sent("Error " + err);
       } else {
-        response.render('pages/senator', {results: result.rows, editing: false});
+        response.render('pages/senator', {results: result.rows, editing: false, errormsg: false});
       }
     })
   });
@@ -97,8 +97,10 @@ app.post('/senator/:id', function(request, response) {
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
+        response.render('pages/senator', {results: result.rows, editing: false,
+          errormsg: "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]"});
       } else {
-        response.render('pages/senator', {results: result.rows, editing: false});
+        response.render('pages/senator', {results: result.rows, editing: false, errormsg: false});
       }
     })
   });
@@ -116,7 +118,7 @@ app.get('/senator/:id/edit', function(request, response) {
         console.error(err);
         // response.sent("Error " + err);
       } else {
-        response.render('pages/senator', {results: result.rows, editing: true});
+        response.render('pages/senator', {results: result.rows, editing: true, errormsg: false});
       }
     })
   });
@@ -145,11 +147,12 @@ app.post('/delete', function(request, response) {
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
+        response.render('pages/main-page', {senators: false, loggedin: true, errormsg: "Invalide Senator ID"});
+      } else {
+        response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
       }
     })
   });
-
-  response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
 });
 
 // Adding a senator
@@ -169,7 +172,8 @@ app.post('/insert', function(request, response) {
       done();
       if (err) {
         console.error(err);
-        response.render('pages/main-page', {senators: false, loggedin: true, errormsg: err});
+        response.render('pages/main-page', {senators: false, loggedin: true,
+          errormsg: "Invalid input. Make sure all fields (except for optional website) have been entered and party is one of [Independent, Republican, Democratic]"});
       } else {
         response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
       }
