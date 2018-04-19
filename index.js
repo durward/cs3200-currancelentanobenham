@@ -85,7 +85,7 @@ app.post('/senator/:id', function(request, response) {
       }
     })
   });
-  var joinquery = `SELECT * FROM senator_bills('${id}');`;
+  var joinquery = `SELECT * FROM senator_bills('${senID}');`;
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(joinquery, function(err, result) {
       done();
