@@ -158,7 +158,6 @@ app.post('/delete', function(request, response) {
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
-        response.render('pages/main-page', {senators: false, loggedin: true, errormsg: "Invalide Senator ID"});
       } else {
         response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
       }
