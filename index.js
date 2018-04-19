@@ -73,46 +73,47 @@ app.get('/senator/:id', function(request, response) {
 // Updating fields of a senator
 app.post('/senator/:id', function(request, response) {
   var body = request.body;
-  var senID = body.id;
+  var senID = request.params.id;
   var fname = body.fname;
   var lname = body.lname;
   var state = body.state;
   var party = body.party;
   var website = body.website;
   var newquery = `update senators set fname='${fname}', lname='${lname}', state='${state}', party='${party}', website='${website}' where senid='${senID}'`;
-
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query(newquery, function(err, result) {
-      done();
-      var joinquery = `SELECT * FROM senator_bills('${senID}');`;
-      if (err) {
-        console.error(err);
-        // response.sent("Error " + err);
-        client.query(joinquery, function(err, result) {
-          done();
-          if (err) {
-            console.error(err);
-            // response.sent("Error " + err);
-          } else {
-            response.render('pages/senator', {results: result.rows, editing: false,
-          errormsg: "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]"});
-          }
-        })
-      } else {
-        client.query(joinquery, function(err, result) {
-          done();
-          if (err) {
-            console.error(err);
-            // response.sent("Error " + err);
-          } else {
-            response.render('pages/senator', {results: result.rows, editing: false, errormsg: false});
-          }
-        })
-      }
-    })
-  });
   var joinquery = `SELECT * FROM senator_bills('${senID}');`;
+
+  if (senID == "" || fname == "" || lname == "" || state == "" || party == "") {
+    reloadsenatorpage(response, joinquery,
+      "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
+  } else {
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query(newquery, function(err, result) {
+        done();
+        var joinquery = `SELECT * FROM senator_bills('${senID}');`;
+        if (err) {
+          console.error(err);
+          // response.sent("Error " + err);
+          reloadsenatorpage(response, joinquery,
+            "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
+        } else {
+          reloadsenatorpage(response, joinquery, false);
+        }
+      })
+    });
+  }
 });
+
+function reloadsenatorpage(joinquery, error) {
+  client.query(joinquery, function(err, result) {
+    done();
+    if (err) {
+      console.error(err);
+      // response.sent("Error " + err);
+    } else {
+      response.render('pages/senator', {results: result.rows, editing: false, errormsg: error});
+    }
+  })
+}
 
 // Entering edit mode for a specific senator
 app.get('/senator/:id/edit', function(request, response) {

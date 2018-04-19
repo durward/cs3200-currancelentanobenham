@@ -27,7 +27,7 @@
           </form>
         <% } else { %>
           <form action="/senator/<%= results[0].senid %>" method="post">
-            <td> <input type="text" name="id" value="<%= results[0].senid %>"> </td>
+            <td> <%= results[0].senid %> </td>
             <td> <input type="text" name="fname" value="<%= results[0].fname %>">  </td>
             <td> <input type="text" name="lname" value="<%= results[0].lname %>">  </td>
             <td> <input type="text" name="state" value="<%= results[0].state %>">  </td>
