@@ -66,7 +66,7 @@ app.get('/senator/:id', function(request, response) {
   });
 });
 
-app.post('/senator/:id/edit', function(request, response) {
+app.get('/senator/:id/edit', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
 
