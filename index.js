@@ -30,7 +30,7 @@ app.use('/', routes);
 app.get('/', function(request, response) {
     console.log("Main page");
 
-    response.render('pages/main-page', {senators: false, loggedin: false});
+    response.render('pages/main-page', {senators: false, loggedin: false, errormsg: false});
 });
 
 // Logging into the website
@@ -40,9 +40,9 @@ app.post('/login', function(request, response) {
   var pwd = body.pwd;
 
   if (pwd == "admin" && uname == "admin") {
-    response.render('pages/main-page', {senators: false, loggedin: true});
+    response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
   } else  {
-    response.render('pages/main-page', {senators: false, loggedin: false});
+    response.render('pages/main-page', {senators: false, loggedin: false, errormsg: false});
   }
 });
 
@@ -149,7 +149,7 @@ app.post('/delete', function(request, response) {
     })
   });
 
-  response.render('pages/main-page', {senators: false, loggedin: true});
+  response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
 });
 
 // Adding a senator
@@ -175,8 +175,6 @@ app.post('/insert', function(request, response) {
       }
     })
   });
-
-  response.render('pages/main-page', {senators: false, loggedin: true});
 });
 
 // Function for reloading the homepage
@@ -188,7 +186,7 @@ function reloadhomepage(response, senatorsquery) {
         console.error(err);
         response.sent("Error " + err);
       } else {
-        response.render('pages/main-page', {senators: result.rows, loggedin: true});
+        response.render('pages/main-page', {senators: result.rows, loggedin: true, errormsg: false}});
       }
     })
   });
