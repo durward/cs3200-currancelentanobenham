@@ -169,7 +169,9 @@ app.post('/insert', function(request, response) {
       done();
       if (err) {
         console.error(err);
-        // response.sent("Error " + err);
+        response.render('pages/main-page', {senators: false, loggedin: true, errormsg: err});
+      } else {
+        response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
       }
     })
   });
