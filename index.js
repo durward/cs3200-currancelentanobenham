@@ -83,8 +83,10 @@ app.post('/senator/:id', function(request, response) {
   var joinquery = `SELECT * FROM senator_bills('${senID}');`;
 
   if (senID == "" || fname == "" || lname == "" || state == "" || party == "") {
-    reloadsenatorpage(client, response, joinquery,
-      "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      reloadsenatorpage(client, response, joinquery,
+        "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
+    }
   } else {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
       client.query(newquery, function(err, result) {
