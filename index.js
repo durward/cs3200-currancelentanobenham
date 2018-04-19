@@ -33,6 +33,7 @@ app.get('/', function(request, response) {
     response.render('pages/main-page', {senators: false, loggedin: false});
 });
 
+// Logging into the website
 app.post('/login', function(request, response) {
   var body = request.body;
   var uname = body.uname;
@@ -45,10 +46,13 @@ app.post('/login', function(request, response) {
   }
 });
 
+// Getting to the API page
 app.get('/api', function(request, response) {
 
     response.render('pages/api');
 });
+
+// Getting a specific senator
 app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
@@ -66,6 +70,7 @@ app.get('/senator/:id', function(request, response) {
   });
 });
 
+// Updating fields of a senator
 app.post('/senator/:id', function(request, response) {
   var body = request.body;
   var senID = body.id;
@@ -98,6 +103,8 @@ app.post('/senator/:id', function(request, response) {
     })
   });
 });
+
+// Entering edit mode for a specific senator
 app.get('/senator/:id/edit', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
@@ -115,6 +122,7 @@ app.get('/senator/:id/edit', function(request, response) {
   });
 });
 
+// Searching for senator by first name
 app.post('/search', function(request, response) {
   var senatorsquery = 'SELECT * FROM senators;';
   if(request.body.fname !== "") {
@@ -125,6 +133,7 @@ app.post('/search', function(request, response) {
   reloadhomepage(response, senatorsquery);
 });
 
+// Removing a senator
 app.post('/delete', function(request, response) {
   var senid = request.body.id;
   var newquery = `DELETE FROM senators WHERE senid = '${senid}';`;
@@ -136,15 +145,15 @@ app.post('/delete', function(request, response) {
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
-      } else {
-
-        var senatorsquery = 'SELECT * FROM senators;'
-        // reloadhomepage(response);
       }
     })
   });
+
+  var senatorsquery = 'SELECT * FROM senators;'
+  reloadhomepage(response, senatorsquery);
 });
 
+// Adding a senator
 app.post('/insert', function(request, response) {
   var body = request.body;
   var senID = body.id;
@@ -162,15 +171,15 @@ app.post('/insert', function(request, response) {
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
-      } else {
-
-        var senatorsquery = 'SELECT * FROM senators;'
-        // reloadhomepage(response);
       }
     })
   });
+
+  var senatorsquery = 'SELECT * FROM senators;'
+  reloadhomepage(response, senatorsquery);
 });
 
+// Function for reloading the homepage
 function reloadhomepage(response, senatorsquery) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(senatorsquery, function(err, result) {
