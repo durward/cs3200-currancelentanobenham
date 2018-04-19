@@ -84,26 +84,34 @@ app.post('/senator/:id', function(request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(newquery, function(err, result) {
       done();
+      var joinquery = `SELECT * FROM senator_bills('${senID}');`;
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
+        client.query(joinquery, function(err, result) {
+          done();
+          if (err) {
+            console.error(err);
+            // response.sent("Error " + err);
+          } else {
+            response.render('pages/senator', {results: result.rows, editing: false,
+          errormsg: "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]"});
+          }
+        })
+      } else {
+        client.query(joinquery, function(err, result) {
+          done();
+          if (err) {
+            console.error(err);
+            // response.sent("Error " + err);
+          } else {
+            response.render('pages/senator', {results: result.rows, editing: false, errormsg: false});
+          }
+        })
       }
     })
   });
   var joinquery = `SELECT * FROM senator_bills('${senID}');`;
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query(joinquery, function(err, result) {
-      done();
-      if (err) {
-        console.error(err);
-        // response.sent("Error " + err);
-        response.render('pages/senator', {results: result.rows, editing: false,
-          errormsg: "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]"});
-      } else {
-        response.render('pages/senator', {results: result.rows, editing: false, errormsg: false});
-      }
-    })
-  });
 });
 
 // Entering edit mode for a specific senator
@@ -167,18 +175,25 @@ app.post('/insert', function(request, response) {
   var newquery = `INSERT INTO senators VALUES ('${senID}', '${fname}', '${lname}', '${state}', '${party}', '${website}')`;
   console.log(newquery);
 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query(newquery, function(err, result) {
-      done();
-      if (err) {
-        console.error(err);
-        response.render('pages/main-page', {senators: false, loggedin: true,
-          errormsg: "Invalid input. Make sure all fields (except for optional website) have been entered and party is one of [Independent, Republican, Democratic]"});
-      } else {
-        response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
-      }
-    })
-  });
+
+  if (senID == "" || fname == "" || lname == "" || state == "" || party == "") {
+    response.render('pages/main-page', {senators: false, loggedin: true,
+      errormsg: "Invalid input. Make sure all fields (except for optional website) have been entered and party is one of [Independent, Republican, Democratic]"});
+  } else {
+    pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+      client.query(newquery, function(err, result) {
+        done();
+        if (err) {
+          console.error(err);
+          response.render('pages/main-page', {senators: false, loggedin: true,
+            errormsg: "Invalid input. Make sure all fields (except for optional website) have been entered and party is one of [Independent, Republican, Democratic]"});
+        } else {
+          response.render('pages/main-page', {senators: false, loggedin: true, errormsg: false});
+        }
+      })
+    });
+  }
+
 });
 
 // Function for reloading the homepage
