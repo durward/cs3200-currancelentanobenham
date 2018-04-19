@@ -149,8 +149,7 @@ app.post('/delete', function(request, response) {
     })
   });
 
-  var senatorsquery = 'SELECT * FROM senators;'
-  reloadhomepage(response, senatorsquery);
+  response.render('pages/main-page', {senators: false, loggedin: true});
 });
 
 // Adding a senator
@@ -175,8 +174,7 @@ app.post('/insert', function(request, response) {
     })
   });
 
-  var senatorsquery = 'SELECT * FROM senators;'
-  reloadhomepage(response, senatorsquery);
+  response.render('pages/main-page', {senators: false, loggedin: true});
 });
 
 // Function for reloading the homepage
@@ -193,6 +191,27 @@ function reloadhomepage(response, senatorsquery) {
     })
   });
 }
+
+// BILLS
+// Getting a specific bill
+app.get('/senator/:id', function(request, response) {
+  var id = request.params.id;
+  var query = `SELECT * FROM bills where billid = '${id}';`;
+
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(query, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        // response.sent("Error " + err);
+      } else {
+        response.render('pages/bill', {results: result.rows, editing: false});
+      }
+    })
+  });
+});
+
+
 
 app.listen(app.get('port'), function() {
 });
