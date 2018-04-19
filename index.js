@@ -41,6 +41,7 @@ app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
   console.log(`Checking for senator ${id}`);
+  console.log(`/api/senators/${id}`);
   app.post(`/api/senators/${id}`, function(request, response) {
     console.log(`Results for senator ${id}`);
     console.log("response");
