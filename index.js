@@ -33,13 +33,15 @@ app.get('/', function(request, response) {
     response.render('pages/main-page', {senators: false, loggedin: false});
 });
 
-app.post('/insert', function(request, response) {
+app.post('/login', function(request, response) {
   var body = request.body;
   var uname = body.uname;
   var pwd = body.pwd;
 
   if (pwd == "admin" && uname == "admin") {
     response.render('pages/main-page', {senators: false, loggedin: true});
+  } else  {
+    response.render('pages/main-page', {senators: false, loggedin: false});
   }
 });
 
