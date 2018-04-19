@@ -201,14 +201,15 @@ app.get('/bill/:id', function(request, response) {
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     var billdata = false;
-    var votedata = false
+    var votedata = false;
     client.query(query, function(err, result) {
       done();
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
       } else {
-        billdata = result.rows
+        billdata = result.rows;
+        console.log(billdata);
       }
     })
 
@@ -218,11 +219,11 @@ app.get('/bill/:id', function(request, response) {
         console.error(err);
         // response.sent("Error " + err);
       } else {
-        votedata = result.rows
+        votedata = result.rows;
       }
     })
 
-
+    console.log(billdata);
     response.render('pages/bill', {bill: billdata, votes: votedata});
   });
 });
