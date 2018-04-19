@@ -83,7 +83,7 @@ app.post('/senator/:id', function(request, response) {
   var joinquery = `SELECT * FROM senator_bills('${senID}');`;
 
   if (senID == "" || fname == "" || lname == "" || state == "" || party == "") {
-    reloadsenatorpage(response, joinquery,
+    reloadsenatorpage(client, response, joinquery,
       "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
   } else {
     pg.connect(process.env.DATABASE_URL, function(err, client, done) {
@@ -93,17 +93,17 @@ app.post('/senator/:id', function(request, response) {
         if (err) {
           console.error(err);
           // response.sent("Error " + err);
-          reloadsenatorpage(response, joinquery,
+          reloadsenatorpage(client, response, joinquery,
             "Invalid update. Make sure no field was left blank (except for optional  website) and party is one of [Independent, Republican, Democratic]");
         } else {
-          reloadsenatorpage(response, joinquery, false);
+          reloadsenatorpage(client, response, joinquery, false);
         }
       })
     });
   }
 });
 
-function reloadsenatorpage(joinquery, error) {
+function reloadsenatorpage(client, response, joinquery, error) {
   client.query(joinquery, function(err, result) {
     done();
     if (err) {
