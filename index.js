@@ -40,30 +40,18 @@ app.get('/api', function(request, response) {
 app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
-  console.log(`Checking for senator ${id}`);
-  console.log(`/api/senators/${id}`);
-  request.get(`/api/senators/${id}`, function(request, response) {
-    console.log(`Results for senator ${id}`);
-    console.log("response");
-    console.log(response);
-        if (!err && response.statusCode == 200) {
-          console.log(`Works for senator ${id}`);
-            var locals = JSON.parse(body);
-            response.render('pages/senator', {results: locals.data});
-        }
-    });
 
-  // pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-  //   client.query(joinquery, function(err, result) {
-  //     done();
-  //     if (err) {
-  //       console.error(err);
-  //       // response.sent("Error " + err);
-  //     } else {
-  //       response.render('pages/senator', {results: result.rows});
-  //     }
-  //   })
-  // });
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(joinquery, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        // response.sent("Error " + err);
+      } else {
+        response.render('pages/senator', {results: result.rows});
+      }
+    })
+  });
 });
 
 app.post('/search', function(request, response) {
