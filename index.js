@@ -130,7 +130,7 @@ function reloadhomepage(response, senatorsquery) {
         console.error(err);
         response.sent("Error " + err);
       } else {
-        response.render('pages/main-page', {senators: result.rows});
+        response.render('pages/main-page', {senators: result.rows, loggedin: true});
       }
     })
   });
