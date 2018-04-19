@@ -194,20 +194,36 @@ function reloadhomepage(response, senatorsquery) {
 
 // BILLS
 // Getting a specific bill
-app.get('/senator/:id', function(request, response) {
+app.get('/bill/:id', function(request, response) {
   var id = request.params.id;
   var query = `SELECT * FROM bills where billid = '${id}';`;
+  var query2 = `SELECT * FROM votes v, senators s where v.billid = '${id}' and s.senid = v.senid;`;
 
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    var billdata = false;
+    var votedata = false
     client.query(query, function(err, result) {
       done();
       if (err) {
         console.error(err);
         // response.sent("Error " + err);
       } else {
-        response.render('pages/bill', {results: result.rows, editing: false});
+        billdata = result.rows
       }
     })
+
+    client.query(query2, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        // response.sent("Error " + err);
+      } else {
+        votedata = result.rows
+      }
+    })
+
+
+    response.render('pages/bill', {bill: billdata, votes: votedata});
   });
 });
 

@@ -49,7 +49,7 @@
       </tr>
       <% results.forEach(function(r) { %>
       <tr>
-        <td> <%= r.billid %> </td>
+        <td> <a href='/bill/<%= r.billid %>'><%= r.billid %></a> </td>
         <td> <%= r.billname %> </td>
         <td> <%= r.introduceddate %> </td>
         <td> <%= r.recentaction %> </td>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+    <h1>Information for <%= bill[0].billname %></h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Bill Name</th>
+        <th>Introduced Date</th>
+        <th>Recent Action</th>
+        <th>Recent Action Date</th>
+      </tr>
+      <tr>
+        <td> <%= bill[0].billid %> </td>
+        <td> <%= bill[0].billname %> </td>
+        <td> <%= bill[0].introduceddate %> </td>
+        <td> <%= bill[0].recentaction %> </td>
+        <td> <%= bill[0].recentactiondate %> </td>
+      </tr>
+    </table>
+    <h1>Votes</h1>
+    <table>
+      <tr>
+        <th>Senator Name</th>
+        <th>Vote</th>
+      </tr>
+      <% votes.forEach(function(r) { %>
+      <tr>
+        <td> <a href='/senator/<%= r.senid %>'><%= r.fname %> <%= r.lname %></a> </td>
+        <td> <%= r.votecast %> </td>
+      </tr>
+      <% }); %>
+    </table>
+</body>
+</html>
