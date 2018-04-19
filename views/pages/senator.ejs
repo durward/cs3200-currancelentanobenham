@@ -27,12 +27,12 @@
           </form>
         <% } else { %>
           <form action="/senator/<%= results[0].senid %>" method="post">
-            <td> <input type="text" name="id" placeholder="<%= results[0].senid %>"> </td>
-            <td> <input type="text" name="fname" placeholder="<%= results[0].fname %>">  </td>
-            <td> <input type="text" name="lname" placeholder="<%= results[0].lname %>">  </td>
-            <td> <input type="text" name="state" placeholder="<%= results[0].state %>">  </td>
-            <td> <input type="text" name="party" placeholder="<%= results[0].party %>">  </td>
-            <td> <input type="text" name="website" placeholder="<%= results[0].website %>">  </td>
+            <td> <%= results[0].senid %> </td>
+            <td> <input type="text" name="fname"> <%= results[0].fname %> </input>  </td>
+            <td> <input type="text" name="lname"> <%= results[0].lname %> </input>  </td>
+            <td> <input type="text" name="state"> <%= results[0].state %> </input>  </td>
+            <td> <input type="text" name="party"> <%= results[0].party %> </input>  </td>
+            <td> <input type="text" name="website"> <%= results[0].website %> </input>  </td>
             <td><input type="submit" value="Edit"></td>
           </form>
         <% } %>

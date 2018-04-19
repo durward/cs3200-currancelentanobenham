@@ -70,15 +70,22 @@ app.post('/senator/:id', function(request, response) {
   var body = request.body;
   var senID = body.id;
   var fname = body.fname;
-  console.log("request body:");
-  console.log(body);
   var lname = body.lname;
   var state = body.state;
   var party = body.party;
   var website = body.website;
-  var newquery = `INSERT INTO senators VALUES ('${senID}', '${fname}', '${lname}', '${state}', '${party}', '${website}')`;
-  var joinquery = `SELECT * FROM senator_bills('${id}');`;
+  var newquery = `update senators set fname='${fname}', lname='${lname}', state='${state}', party='${party}', website='${website}' where senid='${senID}'`;
 
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(newquery, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        // response.sent("Error " + err);
+      }
+    })
+  });
+  var joinquery = `SELECT * FROM senator_bills('${id}');`;
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(joinquery, function(err, result) {
       done();
