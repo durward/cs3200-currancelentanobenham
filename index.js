@@ -46,19 +46,19 @@ app.get('/senator/:id', function(request, response) {
             var locals = JSON.parse(body);
             response.render('pages/senator', {results: locals.data});
         }
-    }
+    });
 
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
-    client.query(joinquery, function(err, result) {
-      done();
-      if (err) {
-        console.error(err);
-        // response.sent("Error " + err);
-      } else {
-        response.render('pages/senator', {results: result.rows});
-      }
-    })
-  });
+  // pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  //   client.query(joinquery, function(err, result) {
+  //     done();
+  //     if (err) {
+  //       console.error(err);
+  //       // response.sent("Error " + err);
+  //     } else {
+  //       response.render('pages/senator', {results: result.rows});
+  //     }
+  //   })
+  // });
 });
 
 app.post('/search', function(request, response) {
