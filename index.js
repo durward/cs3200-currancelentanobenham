@@ -42,7 +42,7 @@ app.get('/senator/:id', function(request, response) {
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
   console.log(`Checking for senator ${id}`);
   console.log(`/api/senators/${id}`);
-  app.get(`/api/senators/${id}`, function(request, response) {
+  request.get(`/api/senators/${id}`, function(request, response) {
     console.log(`Results for senator ${id}`);
     console.log("response");
     console.log(response);
