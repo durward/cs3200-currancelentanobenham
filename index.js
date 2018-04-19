@@ -41,6 +41,13 @@ app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
 
+  request.get(`/api/senator/${id}`, function(err, response, body) {
+        if (!err && response.statusCode == 200) {
+            var locals = JSON.parse(body);
+            response.render('pages/senator', {results: locals.data});
+        }
+    }
+
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query(joinquery, function(err, result) {
       done();
