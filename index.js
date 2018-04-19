@@ -40,9 +40,11 @@ app.get('/api', function(request, response) {
 app.get('/senator/:id', function(request, response) {
   var id = request.params.id;
   var joinquery = `SELECT * FROM senator_bills('${id}');`;
-  // console.log
+  console.log(`Checking for senator ${id}`);
   request.get(`/api/senators/${id}`, function(err, response, body) {
+    console.log(`Results for senator ${id}`);
         if (!err && response.statusCode == 200) {
+          console.log(`Works for senator ${id}`);
             var locals = JSON.parse(body);
             response.render('pages/senator', {results: locals.data});
         }
