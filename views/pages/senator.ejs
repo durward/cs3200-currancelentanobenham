@@ -26,7 +26,7 @@
             <td><input type="submit" value="Edit"></td>
           </form>
         <% } else { %>
-          <form action="/senator/<%= results[0].senid %>">
+          <form action="/senator/<%= results[0].senid %>" method="put">
             <td> <input type="text" name="id" placeholder="<%= results[0].senid %>"> </td>
             <td> <input type="text" name="fname" placeholder="<%= results[0].fname %>">  </td>
             <td> <input type="text" name="lname" placeholder="<%= results[0].lname %>">  </td>
