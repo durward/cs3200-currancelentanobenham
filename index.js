@@ -60,7 +60,24 @@ app.get('/senator/:id', function(request, response) {
         console.error(err);
         // response.sent("Error " + err);
       } else {
-        response.render('pages/senator', {results: result.rows});
+        response.render('pages/senator', {results: result.rows, editing: false});
+      }
+    })
+  });
+});
+
+app.post('/senator/:id/edit', function(request, response) {
+  var id = request.params.id;
+  var joinquery = `SELECT * FROM senator_bills('${id}');`;
+
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query(joinquery, function(err, result) {
+      done();
+      if (err) {
+        console.error(err);
+        // response.sent("Error " + err);
+      } else {
+        response.render('pages/senator', {results: result.rows, editing: true});
       }
     })
   });

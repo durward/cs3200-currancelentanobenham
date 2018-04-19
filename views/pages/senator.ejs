@@ -15,12 +15,26 @@
         <th>Website</th>
       </tr>
       <tr>
-        <td> <%= results[0].senid %> </td>
-        <td> <%= results[0].fname %> </td>
-        <td> <%= results[0].lname %> </td>
-        <td> <%= results[0].state %> </td>
-        <td> <%= results[0].party %> </td>
-        <td> <%= results[0].website %> </td>
+        <% if(!editing){ %>
+          <td> <%= results[0].senid %> </td>
+          <td> <%= results[0].fname %> </td>
+          <td> <%= results[0].lname %> </td>
+          <td> <%= results[0].state %> </td>
+          <td> <%= results[0].party %> </td>
+          <td> <%= results[0].website %> </td>
+          <form action="/senator/<%= results[0].senid %>/edit">
+            <td><input type="submit" value="Edit"></td>
+          </form>
+        <% } else { %>
+          <form action="/senator/<%= results[0].senid %>">
+            <td> <input type="text" name="id" placeholder="<%= results[0].senid %>"> </td>
+            <td> <input type="text" name="fname" placeholder="<%= results[0].fname %>">  </td>
+            <td> <input type="text" name="lname" placeholder="<%= results[0].lname %>">  </td>
+            <td> <input type="text" name="state" placeholder="<%= results[0].state %>">  </td>
+            <td> <input type="text" name="party" placeholder="<%= results[0].party %>">  </td>
+            <td> <input type="text" name="website" placeholder="<%= results[0].website %>">  </td>
+            <td><input type="submit" value="Edit"></td>
+          </form>
       </tr>
     </table>
     <h1>Sponsored Bills</h1>
